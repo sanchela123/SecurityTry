@@ -2,12 +2,11 @@ package com.example.securitytry.entity;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
-import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.Set;
 
@@ -25,18 +24,20 @@ public class User implements UserDetails {
     private Long id;
 
 
-    @Length(min = 2)
+    @Size(min = 3,message = "Username must been more than 5 characters" )
     private String username;
-    @Size(min = 2,message = "Password must been more than 5 characters" )
+    @Size(min = 3,message = "Password must been more than 5 characters" )
     private String password;
     @Transient
     private String passwordConfirm;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
+
     public Set<Role> getRoles() {
         return roles;
     }
+
 
     public String getPasswordConfirm() {
         return passwordConfirm;

@@ -17,18 +17,13 @@
     </thead>
     <th:forEach items="${allUsers}" var="user">
       <tr>
-        <td>${user.id}</td>
-        <td>${user.username}</td>
-        <td>${user.password}</td>
-        <td>
-          <th:forEach items="${user.roles}" var="role">${role.name}; </th:forEach>
-        </td>
-        <td>
-          <form action="${pageContext.request.contextPath}/admin" method="post">
-            <input type="hidden" name="userId" value="${user.id}"/>
-            <input type="hidden" name="action" value="delete"/>
-            <button type="submit">Delete</button>
-          </form>
+          <td>
+              <tr th:each="user: ${allUsers}">
+                <td th:text="${user.id}" />
+                <td th:text="${user.username}" />
+                <td th:text="${user.password}" />
+                <th th:text="${user.roles}"  />
+              </tr>
 
         </td>
 

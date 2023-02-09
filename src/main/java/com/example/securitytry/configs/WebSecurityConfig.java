@@ -43,7 +43,7 @@ public class WebSecurityConfig{
                 .formLogin()
                 .loginPage("/login")
                 //Перенарпавление на главную страницу после успешного входа
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/index")
                 .permitAll()
                 .and()
                 .logout()

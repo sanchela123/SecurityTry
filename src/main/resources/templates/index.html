@@ -8,14 +8,17 @@
 </head>
 <body>
 <div>
-    <h3>Добро пожаловать!</h3>
-    <sec:authorize access="!isAuthenticated()">
+
+
+    <div sec:authorize="isAnonymous()">
+        <h3>Добро пожаловать! </h3>
         <h4><a href="/login">Войти</a></h4>
         <h4><a href="/registration">Зарегистрироваться</a></h4>
-    </sec:authorize>
-    <sec:authorize access="isAuthenticated()">
+    </div>
+    <div sec:authorize="isAuthenticated()">
+        <h3>Добро пожаловать <span sec:authentication="name">Bob</span>! </h3>
         <h4><a href="/logout">Выйти</a></h4>
-    </sec:authorize>
+    </div>
     <h4><a href="/news">Новости (только пользователь)</a></h4>
     <h4><a href="/admin">Пользователи (только админ)</a></h4>
 </div>

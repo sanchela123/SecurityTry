@@ -53,8 +53,6 @@ public class UserService implements UserDetailsService {
 
         if(userFromDB!=null)
             return false;
-        //       if(user.getUsername().length()<2)
-        //    return false;
         user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
